@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GHOST AI - Chat</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+background:#070707;
+color:white;
+font-family:tahoma;
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+
+/* Header */
+
+.header{
+height:70px;
+background:#111;
+border-bottom:1px solid #333;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 15px;
+}
+
+.logo{
+font-size:23px;
+font-weight:bold;
+}
+
+.clear{
+background:#222;
+border:1px solid #444;
+color:white;
+padding:9px 12px;
+border-radius:10px;
+}
+
+
+/* Chat */
+
+.chat{
+flex:1;
+overflow-y:auto;
+padding:15px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+
+/* Messages */
+
+.message{
+max-width:82%;
+padding:13px 15px;
+border-radius:16px;
+line-height:1.8;
+word-wrap:break-word;
+}
+
+.user{
+align-self:flex-start;
+background:#303030;
+border-bottom-left-radius:5px;
+}
+
+.ai{
+align-self:flex-end;
+background:#151515;
+border:1px solid #333;
+border-bottom-right-radius:5px;
+}
+
+
+/* Welcome */
+
+.welcome{
+text-align:center;
+margin:auto;
+color:#aaa;
+}
+
+.welcome-icon{
+font-size:55px;
+}
+
+
+/* Input */
+
+.input-area{
+background:#111;
+border-top:1px solid #333;
+padding:10px;
+
+display:flex;
+gap:8px;
+}
+
+.input-area input{
+
+flex:1;
+
+background:#222;
+border:1px solid #444;
+
+color:white;
+
+padding:14px;
+
+border-radius:13px;
+
+font-family:tahoma;
+font-size:16px;
+
+outline:none;
+}
+
+.input-area button{
+
+width:55px;
+
+background:#333;
+border:1px solid #555;
+
+color:white;
+
+border-radius:13px;
+
+font-size:20px;
+
+}
+
+
+/* Typing */
+
+.typing{
+color:#888;
+font-size:14px;
+padding:5px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+👻 GHOST AI
+</div>
+
+<button class="clear" onclick="clearChat()">
+🗑️
+</button>
+
+</header>
+
+
+
+<!-- CHAT -->
+
+<main class="chat" id="chat">
+
+<div class="welcome" id="welcome">
+
+<div class="welcome-icon">
+🤖
+</div>
+
+<h2>
+سلام! من GHOST AI هستم 👻
+</h2>
+
+<p>
+پیامت رو بنویس تا گفتگو رو شروع کنیم.
+</p>
+
+</div>
+
+</main>
+
+
+
+<!-- INPUT -->
+
+<div class="input-area">
+
+<input
+id="messageInput"
+type="text"
+placeholder="پیامت را بنویس..."
+autocomplete="off"
+>
+
+<button onclick="sendMessage()">
+➤
+</button>
+
+</div>
+
+
+
+<script>
+
+
+const chat =
+document.getElementById("chat");
+
+const input =
+document.getElementById("messageInput");
+
+const welcome =
+document.getElementById("welcome");
+
+
+
+/* Send with Enter */
+
+input.addEventListener("keydown", function(event){
+
+if(event.key === "Enter"){
+
+sendMessage();
+
+}
+
+});
+
+
+
+/* Send message */
+
+function sendMessage(){
+
+let text =
+input.value.trim();
+
+
+if(text === ""){
+
+return;
+
+}
+
+
+/* Hide welcome */
+
+if(welcome){
+
+welcome.style.display="none";
+
+}
+
+
+/* User message */
+
+addMessage(text,"user");
+
+
+input.value="";
+
+
+/* Fake AI typing */
+
+let typing =
+document.createElement("div");
+
+typing.className="typing";
+
+typing.innerText="👻 GHOST AI در حال فکر کردن...";
+
+chat.appendChild(typing);
+
+scrollChat();
+
+
+
+/* Fake AI response */
+
+setTimeout(function(){
+
+typing.remove();
+
+let response =
+generateResponse(text);
+
+addMessage(response,"ai");
+
+},800);
+
+}
+
+
+
+/* Add message */
+
+function addMessage(text,type){
+
+let message =
+document.createElement("div");
+
+message.className=
+"message "+type;
+
+message.innerText=text;
+
+chat.appendChild(message);
+
+scrollChat();
+
+}
+
+
+
+/* Temporary AI */
+
+function generateResponse(text){
+
+let message =
+text.toLowerCase();
+
+
+if(
+message.includes("سلام") ||
+message.includes("hello")
+){
+
+return "سلام! 👻 خوش اومدی به GHOST AI. چطور می‌تونم کمکت کنم؟";
+
+}
+
+
+if(
+message.includes("اسمت") ||
+message.includes("اسم")
+){
+
+return "من GHOST AI هستم 🤖👻";
+
+}
+
+
+if(
+message.includes("برنامه نویسی") ||
+message.includes("کدنویسی")
+){
+
+return "حتماً! 🤖 می‌تونم در یادگیری برنامه‌نویسی و ساخت پروژه بهت کمک کنم.";
+
+}
+
+
+if(
+message.includes("روبلاکس") ||
+message.includes("roblox")
+){
+
+return "روبلاکس جالبه! 🎮 می‌تونیم درباره ساخت بازی، Lua و ایده‌های بازی صحبت کنیم.";
+
+}
+
+
+if(
+message.includes("بازی")
+){
+
+return "🎮 برای ساخت بازی می‌تونیم ایده، طراحی مراحل و سیستم‌های بازی رو با هم بررسی کنیم.";
+
+}
+
+
+return "پیامت رو دریافت کردم 👻🤖\n\nدر نسخه فعلی من یک پاسخ آزمایشی هستم. بعداً می‌تونیم GHOST AI رو به یک مدل هوش مصنوعی واقعی وصل کنیم.";
+
+}
+
+
+
+/* Scroll */
+
+function scrollChat(){
+
+chat.scrollTop =
+chat.scrollHeight;
+
+}
+
+
+
+/* Clear */
+
+function clearChat(){
+
+chat.innerHTML="";
+
+chat.appendChild(
+welcome
+);
+
+welcome.style.display="block";
+
+}
+
+
+
+/* Focus */
+
+input.focus();
+
+
+</script>
+
+</body>
+
+</html>
