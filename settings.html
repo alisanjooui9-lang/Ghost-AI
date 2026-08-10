@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تنظیمات | GHOST AI</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#070707;
+    color:#fff;
+    font-family:tahoma;
+    min-height:100vh;
+    transition:.3s;
+}
+
+/* حالت روشن */
+
+body.light{
+    background:#f2f2f2;
+    color:#111;
+}
+
+.header{
+    height:70px;
+    background:#111;
+    border-bottom:1px solid #333;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+}
+
+body.light .header{
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.back{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+}
+
+.title{
+    text-align:center;
+    margin:10px 0 25px;
+}
+
+.setting{
+    background:#151515;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:14px;
+}
+
+body.light .setting{
+    background:#fff;
+    border:1px solid #ddd;
+}
+
+.setting-title{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.description{
+    color:#888;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:14px;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #444;
+    background:#222;
+    color:white;
+    font-family:tahoma;
+    outline:none;
+}
+
+body.light input[type="text"]{
+    background:#f4f4f4;
+    color:#111;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #444;
+    background:#292929;
+    color:white;
+    font-family:tahoma;
+    font-size:15px;
+    margin-top:10px;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+.danger{
+    background:#351818;
+    border-color:#5a2525;
+}
+
+.switch{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.switch input{
+    width:20px;
+    height:20px;
+}
+
+.status{
+    text-align:center;
+    color:#55d477;
+    margin-top:15px;
+    min-height:20px;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    padding:25px;
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+👻 GHOST AI
+</div>
+
+<a class="back" href="menu.html">
+← بازگشت
+</a>
+
+</header>
+
+
+<main class="container">
+
+<h2 class="title">
+⚙️ تنظیمات
+</h2>
+
+
+<!-- نام کاربر -->
+
+<section class="setting">
+
+<div class="setting-title">
+👤 نام کاربر
+</div>
+
+<div class="description">
+نامی که GHOST AI برای نمایش در برنامه استفاده می‌کند.
+</div>
+
+<input
+type="text"
+id="username"
+placeholder="نام خود را وارد کنید"
+>
+
+<button onclick="saveName()">
+💾 ذخیره نام
+</button>
+
+</section>
+
+
+<!-- حالت شب -->
+
+<section class="setting">
+
+<div class="switch">
+
+<div>
+
+<div class="setting-title">
+🌙 حالت تاریک
+</div>
+
+<div class="description">
+تغییر ظاهر برنامه بین حالت تاریک و روشن.
+</div>
+
+</div>
+
+<input
+type="checkbox"
+id="darkMode"
+checked
+onchange="toggleDarkMode()"
+>
+
+</div>
+
+</section>
+
+
+<!-- پاک کردن چت -->
+
+<section class="setting">
+
+<div class="setting-title">
+🗑️ تاریخچه گفتگو
+</div>
+
+<div class="description">
+پیام‌های ذخیره‌شده در مرورگر را پاک می‌کند.
+</div>
+
+<button class="danger" onclick="clearHistory()">
+🗑️ پاک کردن تاریخچه
+</button>
+
+</section>
+
+
+<!-- درباره -->
+
+<section class="setting">
+
+<div class="setting-title">
+👻 درباره GHOST AI
+</div>
+
+<div class="description">
+GHOST AI یک پروژه هوش مصنوعی با رابط کاربری ساده و مناسب موبایل است.
+<br><br>
+نسخه فعلی: 1.0.0
+<br>
+ساخته شده توسط GHOST ACADEMY
+</div>
+
+</section>
+
+
+<div class="status" id="status"></div>
+
+</main>
+
+
+<footer class="footer">
+
+👻 GHOST AI © 2026
+
+</footer>
+
+
+<script>
+
+/* بارگذاری نام */
+
+const username =
+document.getElementById("username");
+
+const savedName =
+localStorage.getItem("ghost_username");
+
+if(savedName){
+
+username.value = savedName;
+
+}
+
+
+/* ذخیره نام */
+
+function saveName(){
+
+const name =
+username.value.trim();
+
+if(name === ""){
+
+showStatus("❌ لطفاً یک نام وارد کن.");
+
+return;
+
+}
+
+localStorage.setItem(
+"ghost_username",
+name
+);
+
+showStatus(
+"✅ نام با موفقیت ذخیره شد."
+);
+
+}
+
+
+/* حالت تاریک */
+
+const darkMode =
+document.getElementById("darkMode");
+
+const savedTheme =
+localStorage.getItem("ghost_theme");
+
+if(savedTheme === "light"){
+
+document.body.classList.add("light");
+
+darkMode.checked = false;
+
+}
+
+
+function toggleDarkMode(){
+
+if(darkMode.checked){
+
+document.body.classList.remove("light");
+
+localStorage.setItem(
+"ghost_theme",
+"dark"
+);
+
+}else{
+
+document.body.classList.add("light");
+
+localStorage.setItem(
+"ghost_theme",
+"light"
+);
+
+}
+
+}
+
+
+/* پاک کردن تاریخچه */
+
+function clearHistory(){
+
+const answer =
+confirm(
+"آیا مطمئنی می‌خواهی تاریخچه گفتگو پاک شود؟"
+);
+
+if(!answer){
+
+return;
+
+}
+
+localStorage.removeItem("ghost_chat");
+
+showStatus(
+"✅ تاریخچه گفتگو پاک شد."
+);
+
+}
+
+
+/* پیام وضعیت */
+
+function showStatus(text){
+
+const status =
+document.getElementById("status");
+
+status.innerText = text;
+
+setTimeout(function(){
+
+status.innerText = "";
+
+},2500);
+
+}
+
+</script>
+
+</body>
+
+</html>
