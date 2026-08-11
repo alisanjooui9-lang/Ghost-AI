@@ -2,10 +2,15 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>منوی GHOST AI</title>
+
 
 <style>
 
@@ -14,114 +19,269 @@
 }
 
 body{
+
     margin:0;
+
     background:#070707;
-    color:white;
-    font-family:tahoma;
+
+    color:#fff;
+
+    font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+
     min-height:100vh;
+
 }
 
-/* Header */
+
+/* =========================
+   هدر
+========================= */
 
 .header{
+
+    height:70px;
+
     background:#111;
-    border-bottom:1px solid #333;
-    padding:18px 15px;
+
+    border-bottom:
+    1px solid #333;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
+    padding:
+    0 15px;
+
 }
 
 .logo{
-    font-size:24px;
+
+    font-size:23px;
+
     font-weight:bold;
+
 }
 
 .version{
+
     color:#777;
+
     font-size:12px;
+
 }
 
-/* Container */
+
+/* =========================
+   محتوا
+========================= */
 
 .container{
+
     max-width:650px;
+
     margin:auto;
-    padding:20px;
+
+    padding:
+    20px 15px;
+
 }
 
+
+/* =========================
+   خوش آمد
+========================= */
+
 .welcome{
+
     text-align:center;
-    padding:15px 0 25px;
+
+    padding:
+    10px 0 25px;
+
 }
 
 .ai-icon{
-    font-size:55px;
+
+    font-size:60px;
+
 }
 
 .welcome h1{
+
     font-size:25px;
-    margin:10px 0;
+
+    margin:
+    10px 0;
+
 }
 
 .welcome p{
+
     color:#888;
-    line-height:1.8;
+
+    line-height:1.9;
+
 }
 
-/* Menu */
+
+/* =========================
+   منو
+========================= */
 
 .menu{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     gap:14px;
+
 }
 
+
+/* کارت */
+
 .card{
+
     background:#151515;
-    border:1px solid #303030;
+
+    border:
+    1px solid #303030;
+
     border-radius:18px;
+
     padding:20px;
+
     color:white;
+
     text-decoration:none;
+
     text-align:center;
-    transition:.2s;
+
+    transition:
+    .2s;
+
 }
 
 .card:hover{
+
     background:#222;
-    transform:translateY(-3px);
+
+    transform:
+    translateY(-3px);
+
 }
+
+.card:active{
+
+    transform:
+    scale(.98);
+
+}
+
+
+/* آیکون */
 
 .icon{
+
     font-size:38px;
-    margin-bottom:10px;
+
+    margin-bottom:
+    10px;
+
 }
+
+
+/* عنوان */
 
 .card h3{
-    margin:8px 0;
+
+    margin:
+    8px 0;
+
     font-size:17px;
+
 }
+
+
+/* توضیحات */
 
 .card p{
+
     color:#888;
+
     font-size:12px;
+
     line-height:1.7;
+
 }
 
-/* Full card */
+
+/* کارت تمام عرض */
 
 .full{
-    grid-column:1 / -1;
+
+    grid-column:
+    1 / -1;
+
 }
 
-/* Footer */
+
+/* =========================
+   فوتر
+========================= */
 
 .footer{
+
     text-align:center;
+
     color:#555;
-    padding:30px 15px;
+
+    padding:
+    30px 15px;
+
     font-size:12px;
+
+}
+
+
+/* =========================
+   موبایل
+========================= */
+
+@media(max-width:420px){
+
+    .menu{
+
+        gap:10px;
+
+    }
+
+    .card{
+
+        padding:16px 10px;
+
+    }
+
+    .icon{
+
+        font-size:32px;
+
+    }
+
+    .card h3{
+
+        font-size:15px;
+
+    }
+
 }
 
 </style>
@@ -132,19 +292,32 @@ body{
 <body>
 
 
+<!-- =========================
+     هدر
+========================= -->
+
 <header class="header">
 
 <div class="logo">
+
 👻 GHOST AI
+
 </div>
 
+
 <div class="version">
+
 نسخه 1.0.0
+
 </div>
 
 </header>
 
 
+
+<!-- =========================
+     محتوای اصلی
+========================= -->
 
 <main class="container">
 
@@ -152,155 +325,237 @@ body{
 <section class="welcome">
 
 <div class="ai-icon">
+
 🤖
+
 </div>
 
+
 <h1>
+
 منوی اصلی
+
 </h1>
 
+
 <p>
+
 به مرکز GHOST AI خوش آمدی 👻
+
 <br>
-یک گزینه را انتخاب کن.
+
+یک بخش را انتخاب کن.
+
 </p>
 
 </section>
 
 
+
+<!-- =========================
+     کارت‌های منو
+========================= -->
 
 <section class="menu">
 
 
-<!-- Chat -->
+<!-- چت -->
 
-<a class="card full" href="chat.html">
+<a
+class="card full"
+href="chat.html">
 
 <div class="icon">
+
 💬
+
 </div>
 
+
 <h3>
+
 شروع گفتگو
+
 </h3>
 
+
 <p>
-با GHOST AI صحبت کن و سؤال‌های خودت را بپرس.
+
+با GHOST AI گفتگو کن و سؤال‌هایت را بپرس.
+
 </p>
 
 </a>
 
 
 
-<!-- AI Tools -->
+<!-- ابزارهای AI -->
 
-<a class="card" href="#">
+<a
+class="card"
+href="#">
 
 <div class="icon">
+
 🧠
+
 </div>
 
+
 <h3>
+
 ابزارهای AI
+
 </h3>
 
+
 <p>
-ابزارهای هوش مصنوعی GHOST AI
+
+ابزارهای هوش مصنوعی GHOST AI.
+
 </p>
 
 </a>
 
 
 
-<!-- Learning -->
+<!-- یادگیری -->
 
-<a class="card" href="#">
+<a
+class="card"
+href="#">
 
 <div class="icon">
+
 📚
+
 </div>
 
+
 <h3>
+
 یادگیری
+
 </h3>
 
+
 <p>
-کمک به یادگیری و آموزش
+
+کمک به یادگیری و آموزش.
+
 </p>
 
 </a>
 
 
 
-<!-- Ideas -->
+<!-- ایده پردازی -->
 
-<a class="card" href="#">
+<a
+class="card"
+href="#">
 
 <div class="icon">
+
 💡
+
 </div>
 
+
 <h3>
+
 ایده‌پردازی
+
 </h3>
 
+
 <p>
-ایده‌های جدید برای پروژه‌ها
+
+ایده‌های جدید برای پروژه‌ها.
+
 </p>
 
 </a>
 
 
 
-<!-- History -->
+<!-- تاریخچه -->
 
-<a class="card" href="#">
+<a
+class="card"
+href="history.html">
 
 <div class="icon">
+
 🕘
+
 </div>
 
+
 <h3>
+
 تاریخچه
+
 </h3>
 
+
 <p>
+
 گفتگوهای قبلی خودت را ببین.
+
 </p>
 
 </a>
 
 
 
-<!-- Settings -->
+<!-- تنظیمات -->
 
-<a class="card full" href="settings.html">
+<a
+class="card full"
+href="settings.html">
 
 <div class="icon">
+
 ⚙️
+
 </div>
 
+
 <h3>
+
 تنظیمات
+
 </h3>
 
+
 <p>
+
 نام کاربر، حالت تاریک و مدیریت تاریخچه.
+
 </p>
 
 </a>
 
 
 </section>
+
 
 </main>
 
 
 
+<!-- =========================
+     فوتر
+========================= -->
+
 <footer class="footer">
 
 👻 GHOST AI © 2026
-<br><br>
+
+<br>
+<br>
+
 ساخته شده توسط GHOST ACADEMY
 
 </footer>
