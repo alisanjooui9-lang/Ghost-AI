@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تاریخچه | GHOST AI</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#070707;
+    color:#fff;
+    font-family:tahoma,Arial,sans-serif;
+    min-height:100vh;
+}
+
+.header{
+    height:70px;
+    background:#111;
+    border-bottom:1px solid #333;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.back{
+    background:#222;
+    border:1px solid #444;
+    color:white;
+    text-decoration:none;
+
+    padding:9px 13px;
+    border-radius:10px;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:20px 15px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.empty{
+    text-align:center;
+    color:#888;
+    padding:60px 20px;
+}
+
+.history{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.message{
+    padding:13px 15px;
+    border-radius:15px;
+    line-height:1.8;
+    white-space:pre-wrap;
+}
+
+.user{
+    background:#303030;
+    border-bottom-left-radius:5px;
+}
+
+.ai{
+    background:#151515;
+    border:1px solid #333;
+    border-bottom-right-radius:5px;
+}
+
+.label{
+    font-size:11px;
+    color:#777;
+    margin-bottom:5px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    margin-top:20px;
+}
+
+button{
+    flex:1;
+    padding:13px;
+    border-radius:12px;
+
+    background:#222;
+    color:white;
+
+    border:1px solid #444;
+    font-family:tahoma;
+}
+
+.danger{
+    background:#351818;
+    border-color:#5a2525;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="logo">
+👻 GHOST AI
+</div>
+
+<a
+class="back"
+href="menu.html">
+← منو
+</a>
+
+</header>
+
+
+<main class="container">
+
+<h2 class="title">
+🕘 تاریخچه گفتگو
+</h2>
+
+
+<div
+class="history"
+id="history">
+</div>
+
+
+<div
+class="empty"
+id="empty">
+
+<div style="font-size:50px;">
+💬
+</div>
+
+<p>
+هنوز گفتگویی ذخیره نشده است.
+</p>
+
+</div>
+
+
+<div class="actions">
+
+<button onclick="goChat()">
+💬 رفتن به چت
+</button>
+
+<button
+class="danger"
+onclick="clearHistory()">
+🗑️ پاک کردن
+</button>
+
+</div>
+
+</main>
+
+
+<script>
+
+const historyBox =
+document.getElementById("history");
+
+const empty =
+document.getElementById("empty");
+
+
+function loadHistory(){
+
+const saved =
+localStorage.getItem("ghost_chat");
+
+if(!saved){
+
+empty.style.display="block";
+
+return;
+
+}
+
+try{
+
+const messages =
+JSON.parse(saved);
+
+if(
+!Array.isArray(messages) ||
+messages.length === 0
+){
+
+empty.style.display="block";
+
+return;
+
+}
+
+
+empty.style.display="none";
+
+
+messages.forEach(function(item){
+
+const message =
+document.createElement("div");
+
+message.className =
+"message " + item.type;
+
+
+const label =
+document.createElement("div");
+
+label.className="label";
+
+label.innerText =
+item.type === "user"
+? "👤 شما"
+: "👻 GHOST AI";
+
+
+const text =
+document.createElement("div");
+
+text.innerText =
+item.text;
+
+
+message.appendChild(label);
+
+message.appendChild(text);
+
+historyBox.appendChild(message);
+
+});
+
+
+}catch(error){
+
+empty.style.display="block";
+
+}
+
+}
+
+
+/* پاک کردن تاریخچه */
+
+function clearHistory(){
+
+const answer =
+confirm(
+"آیا مطمئنی که می‌خواهی تاریخچه را پاک کنی؟"
+);
+
+if(!answer){
+
+return;
+
+}
+
+localStorage.removeItem(
+"ghost_chat"
+);
+
+historyBox.innerHTML="";
+
+empty.style.display="block";
+
+}
+
+
+/* رفتن به چت */
+
+function goChat(){
+
+window.location.href=
+"chat.html";
+
+}
+
+
+loadHistory();
+
+</script>
+
+</body>
+
+</html>
