@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ابزارهای AI | GHOST AI</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#070707;
+    color:white;
+    font-family:tahoma,Arial,sans-serif;
+    min-height:100vh;
+}
+
+.header{
+    height:70px;
+    background:#111;
+    border-bottom:1px solid #333;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    background:#222;
+    border:1px solid #444;
+    padding:9px 13px;
+    border-radius:10px;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:20px 15px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#888;
+    line-height:1.8;
+    font-size:13px;
+}
+
+.tools{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.tool{
+    background:#151515;
+    border:1px solid #303030;
+    border-radius:18px;
+    padding:20px 12px;
+    text-align:center;
+}
+
+.tool-icon{
+    font-size:40px;
+}
+
+.tool h3{
+    font-size:16px;
+}
+
+.tool p{
+    color:#888;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.tool button{
+    width:100%;
+    padding:11px;
+    background:#292929;
+    color:white;
+    border:1px solid #444;
+    border-radius:11px;
+    font-family:tahoma;
+}
+
+.result{
+    margin-top:10px;
+    color:#72e09a;
+    font-size:13px;
+    line-height:1.8;
+}
+
+textarea,
+input{
+    width:100%;
+    background:#222;
+    color:white;
+    border:1px solid #444;
+    border-radius:11px;
+    padding:11px;
+    font-family:tahoma;
+    outline:none;
+}
+
+textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.footer{
+    text-align:center;
+    color:#555;
+    padding:30px;
+    font-size:12px;
+}
+
+@media(max-width:420px){
+    .tools{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+👻 GHOST AI
+</div>
+
+<a class="back" href="menu.html">
+← منو
+</a>
+
+</header>
+
+
+<main class="container">
+
+<h2 class="title">
+🧠 ابزارهای AI
+</h2>
+
+<p class="subtitle">
+ابزارهای ساده و کاملاً آفلاین GHOST AI
+</p>
+
+
+<section class="tools">
+
+
+<!-- ماشین حساب -->
+
+<div class="tool">
+
+<div class="tool-icon">
+🧮
+</div>
+
+<h3>
+ماشین حساب
+</h3>
+
+<p>
+دو عدد و یک عملگر وارد کن.
+</p>
+
+<input
+id="num1"
+type="number"
+placeholder="عدد اول">
+
+<br><br>
+
+<input
+id="operator"
+type="text"
+placeholder="+  -  *  /">
+
+<br><br>
+
+<input
+id="num2"
+type="number"
+placeholder="عدد دوم">
+
+<button onclick="calculate()">
+محاسبه
+</button>
+
+<div
+class="result"
+id="calcResult">
+</div>
+
+</div>
+
+
+
+<!-- تولید ایده -->
+
+<div class="tool">
+
+<div class="tool-icon">
+💡
+</div>
+
+<h3>
+تولید ایده
+</h3>
+
+<p>
+یک ایده تصادفی برای پروژه بگیر.
+</p>
+
+<button onclick="generateIdea()">
+✨ تولید ایده
+</button>
+
+<div
+class="result"
+id="ideaResult">
+</div>
+
+</div>
+
+
+
+<!-- شمارش متن -->
+
+<div class="tool">
+
+<div class="tool-icon">
+📝
+</div>
+
+<h3>
+شمارش متن
+</h3>
+
+<p>
+تعداد کلمات و حروف متن را ببین.
+</p>
+
+<textarea
+id="textInput"
+placeholder="متنت را اینجا بنویس...">
+</textarea>
+
+<button onclick="countText()">
+🔢 شمارش
+</button>
+
+<div
+class="result"
+id="textResult">
+</div>
+
+</div>
+
+
+
+<!-- عدد تصادفی -->
+
+<div class="tool">
+
+<div class="tool-icon">
+🎲
+</div>
+
+<h3>
+عدد تصادفی
+</h3>
+
+<p>
+یک عدد بین دو مقدار انتخاب کن.
+</p>
+
+<input
+id="min"
+type="number"
+placeholder="حداقل">
+
+<br><br>
+
+<input
+id="max"
+type="number"
+placeholder="حداکثر">
+
+<button onclick="randomNumber()">
+🎲 تولید
+</button>
+
+<div
+class="result"
+id="randomResult">
+</div>
+
+</div>
+
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+👻 GHOST AI © 2026
+
+<br><br>
+
+GHOST ACADEMY
+
+</footer>
+
+
+<script>
+
+/* ماشین حساب */
+
+function calculate(){
+
+const a =
+Number(document.getElementById("num1").value);
+
+const b =
+Number(document.getElementById("num2").value);
+
+const op =
+document.getElementById("operator").value.trim();
+
+let result;
+
+if(op === "+"){
+result = a + b;
+}
+
+else if(op === "-"){
+result = a - b;
+}
+
+else if(op === "*" || op === "×"){
+result = a * b;
+}
+
+else if(op === "/"){
+
+if(b === 0){
+document.getElementById("calcResult").innerText =
+"❌ تقسیم بر صفر امکان‌پذیر نیست.";
+return;
+}
+
+result = a / b;
+
+}
+
+else{
+
+document.getElementById("calcResult").innerText =
+"❌ عملگر را درست وارد کن.";
+
+return;
+
+}
+
+document.getElementById("calcResult").innerText =
+"✅ جواب: " + result;
+
+}
+
+
+/* ایده */
+
+function generateIdea(){
+
+const ideas = [
+
+"🎮 ساخت یک بازی مرحله‌ای موبایلی",
+
+"🤖 ساخت یک دستیار هوش مصنوعی آفلاین",
+
+"📚 ساخت برنامه آموزش برنامه‌نویسی",
+
+"⚽ ساخت بازی حدس بازیکن فوتبال",
+
+"🧩 ساخت بازی معمایی",
+
+"🏆 ساخت سیستم امتیاز و جدول رتبه‌بندی",
+
+"🌐 ساخت سایت آموزشی تعاملی",
+
+"👻 ساخت یک بازی ترسناک داستانی",
+
+"🚀 ساخت بازی فضایی",
+
+"🛡️ ساخت بازی ماجراجویی"
+
+];
+
+const index =
+Math.floor(
+Math.random() * ideas.length
+);
+
+document.getElementById("ideaResult").innerText =
+ideas[index];
+
+}
+
+
+/* شمارش متن */
+
+function countText(){
+
+const text =
+document.getElementById("textInput").value;
+
+const characters =
+text.length;
+
+const words =
+text.trim() === ""
+? 0
+: text.trim().split(/\s+/).length;
+
+document.getElementById("textResult").innerText =
+"🔤 حروف: " + characters +
+"\n📝 کلمات: " + words;
+
+}
+
+
+/* عدد تصادفی */
+
+function randomNumber(){
+
+let min =
+Number(document.getElementById("min").value);
+
+let max =
+Number(document.getElementById("max").value);
+
+if(min > max){
+
+const temp = min;
+
+min = max;
+
+max = temp;
+
+}
+
+if(
+!Number.isFinite(min) ||
+!Number.isFinite(max)
+){
+
+document.getElementById("randomResult").innerText =
+"❌ هر دو عدد را وارد کن.";
+
+return;
+
+}
+
+const result =
+Math.floor(
+Math.random() *
+(max - min + 1)
+) + min;
+
+document.getElementById("randomResult").innerText =
+"🎲 عدد تصادفی: " + result;
+
+}
+
+</script>
+
+</body>
+
+</html>
