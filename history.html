@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تاریخچه | GHOST AI</title>
+<title>منوی GHOST AI</title>
 
 <style>
 
@@ -15,107 +15,133 @@
 
 body{
     margin:0;
+    min-height:100vh;
     background:#070707;
     color:#fff;
     font-family:tahoma,Arial,sans-serif;
-    min-height:100vh;
 }
 
 .header{
     height:70px;
+    padding:0 15px;
     background:#111;
     border-bottom:1px solid #333;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    padding:0 15px;
 }
 
 .logo{
-    font-size:22px;
+    font-size:23px;
     font-weight:bold;
 }
 
-.back{
-    background:#222;
-    border:1px solid #444;
-    color:white;
-    text-decoration:none;
-
-    padding:9px 13px;
-    border-radius:10px;
+.version{
+    color:#777;
+    font-size:12px;
 }
 
 .container{
+    width:100%;
     max-width:650px;
     margin:auto;
-    padding:20px 15px;
+    padding:20px 15px 30px;
 }
 
-.title{
+.welcome{
     text-align:center;
-    margin-bottom:20px;
+    padding:10px 0 25px;
 }
 
-.empty{
-    text-align:center;
+.ai-icon{
+    font-size:60px;
+}
+
+.welcome h1{
+    font-size:25px;
+    margin:10px 0;
+}
+
+.welcome p{
     color:#888;
-    padding:60px 20px;
+    line-height:1.9;
 }
 
-.history{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+.menu{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
 }
 
-.message{
-    padding:13px 15px;
-    border-radius:15px;
-    line-height:1.8;
-    white-space:pre-wrap;
-}
-
-.user{
-    background:#303030;
-    border-bottom-left-radius:5px;
-}
-
-.ai{
+.card{
     background:#151515;
-    border:1px solid #333;
-    border-bottom-right-radius:5px;
+    border:1px solid #303030;
+    border-radius:18px;
+    padding:20px 12px;
+
+    color:#fff;
+    text-decoration:none;
+    text-align:center;
+
+    transition:.2s;
 }
 
-.label{
-    font-size:11px;
-    color:#777;
-    margin-bottom:5px;
-}
-
-.actions{
-    display:flex;
-    gap:8px;
-    margin-top:20px;
-}
-
-button{
-    flex:1;
-    padding:13px;
-    border-radius:12px;
-
+.card:hover{
     background:#222;
-    color:white;
-
-    border:1px solid #444;
-    font-family:tahoma;
+    transform:translateY(-3px);
 }
 
-.danger{
-    background:#351818;
-    border-color:#5a2525;
+.card:active{
+    transform:scale(.97);
+}
+
+.full{
+    grid-column:1 / -1;
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    margin:8px 0;
+    font-size:17px;
+}
+
+.card p{
+    margin:0;
+    color:#888;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.footer{
+    text-align:center;
+    color:#555;
+    padding:25px 15px 35px;
+    font-size:12px;
+}
+
+@media(max-width:420px){
+
+    .menu{
+        gap:10px;
+    }
+
+    .card{
+        padding:16px 9px;
+    }
+
+    .icon{
+        font-size:32px;
+    }
+
+    .card h3{
+        font-size:15px;
+    }
+
 }
 
 </style>
@@ -132,186 +158,179 @@ button{
 👻 GHOST AI
 </div>
 
-<a
-class="back"
-href="menu.html">
-← منو
-</a>
+<div class="version">
+نسخه 1.0.0
+</div>
 
 </header>
 
 
 <main class="container">
 
-<h2 class="title">
-🕘 تاریخچه گفتگو
-</h2>
 
+<section class="welcome">
 
-<div
-class="history"
-id="history">
+<div class="ai-icon">
+🤖
 </div>
 
+<h1>
+منوی اصلی
+</h1>
 
-<div
-class="empty"
-id="empty">
+<p>
+به مرکز GHOST AI خوش آمدی 👻
+<br>
+یک بخش را انتخاب کن.
+</p>
 
-<div style="font-size:50px;">
+</section>
+
+
+<section class="menu">
+
+
+<!-- چت -->
+
+<a
+class="card full"
+href="chat.html">
+
+<div class="icon">
 💬
 </div>
 
+<h3>
+شروع گفتگو
+</h3>
+
 <p>
-هنوز گفتگویی ذخیره نشده است.
+با GHOST AI گفتگو کن و سؤال‌هایت را بپرس.
 </p>
 
+</a>
+
+
+<!-- ابزارهای AI -->
+
+<a
+class="card"
+href="tools.html">
+
+<div class="icon">
+🧠
 </div>
 
+<h3>
+ابزارهای AI
+</h3>
 
-<div class="actions">
+<p>
+ماشین‌حساب، ایده‌پردازی و ابزارهای آفلاین.
+</p>
 
-<button onclick="goChat()">
-💬 رفتن به چت
-</button>
+</a>
 
-<button
-class="danger"
-onclick="clearHistory()">
-🗑️ پاک کردن
-</button>
 
+<!-- یادگیری -->
+
+<a
+class="card"
+href="#">
+
+<div class="icon">
+📚
 </div>
+
+<h3>
+یادگیری
+</h3>
+
+<p>
+آموزش و یادگیری موضوعات مختلف.
+</p>
+
+</a>
+
+
+<!-- ایده پردازی -->
+
+<a
+class="card"
+href="#">
+
+<div class="icon">
+💡
+</div>
+
+<h3>
+ایده‌پردازی
+</h3>
+
+<p>
+ایده‌های جدید برای پروژه‌ها.
+</p>
+
+</a>
+
+
+<!-- تاریخچه -->
+
+<a
+class="card"
+href="history.html">
+
+<div class="icon">
+🕘
+</div>
+
+<h3>
+تاریخچه
+</h3>
+
+<p>
+گفتگوهای قبلی خودت را ببین.
+</p>
+
+</a>
+
+
+<!-- تنظیمات -->
+
+<a
+class="card full"
+href="settings.html">
+
+<div class="icon">
+⚙️
+</div>
+
+<h3>
+تنظیمات
+</h3>
+
+<p>
+نام کاربر، حالت تاریک و مدیریت تاریخچه.
+</p>
+
+</a>
+
+
+</section>
 
 </main>
 
 
-<script>
+<footer class="footer">
 
-const historyBox =
-document.getElementById("history");
+👻 GHOST AI © 2026
 
-const empty =
-document.getElementById("empty");
+<br><br>
 
+ساخته شده توسط GHOST ACADEMY
 
-function loadHistory(){
+</footer>
 
-const saved =
-localStorage.getItem("ghost_chat");
-
-if(!saved){
-
-empty.style.display="block";
-
-return;
-
-}
-
-try{
-
-const messages =
-JSON.parse(saved);
-
-if(
-!Array.isArray(messages) ||
-messages.length === 0
-){
-
-empty.style.display="block";
-
-return;
-
-}
-
-
-empty.style.display="none";
-
-
-messages.forEach(function(item){
-
-const message =
-document.createElement("div");
-
-message.className =
-"message " + item.type;
-
-
-const label =
-document.createElement("div");
-
-label.className="label";
-
-label.innerText =
-item.type === "user"
-? "👤 شما"
-: "👻 GHOST AI";
-
-
-const text =
-document.createElement("div");
-
-text.innerText =
-item.text;
-
-
-message.appendChild(label);
-
-message.appendChild(text);
-
-historyBox.appendChild(message);
-
-});
-
-
-}catch(error){
-
-empty.style.display="block";
-
-}
-
-}
-
-
-/* پاک کردن تاریخچه */
-
-function clearHistory(){
-
-const answer =
-confirm(
-"آیا مطمئنی که می‌خواهی تاریخچه را پاک کنی؟"
-);
-
-if(!answer){
-
-return;
-
-}
-
-localStorage.removeItem(
-"ghost_chat"
-);
-
-historyBox.innerHTML="";
-
-empty.style.display="block";
-
-}
-
-
-/* رفتن به چت */
-
-function goChat(){
-
-window.location.href=
-"chat.html";
-
-}
-
-
-loadHistory();
-
-</script>
 
 </body>
 
